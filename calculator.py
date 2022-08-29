@@ -39,6 +39,9 @@ def storage(x):
 
     e.insert(tk.END, x)
 
+def enter(event):
+    evaluate()
+
 
 def evaluate():
 
@@ -47,15 +50,27 @@ def evaluate():
 
     str_expr = ''.join(expr)
 
-    try:
-        sum = str(eval(str_expr))
-        clear()
-        f_sum =  float(sum) 
-        f_sum = round(f_sum, 3)
-        e.insert(tk.END,f_sum)
-    except:
-       clear()
-       e.insert(tk.END, "Invalid Input")
+    if expr:
+
+        try:
+            sum = str(eval(str_expr))
+            clear()
+            f_sum =  float(sum) 
+            f_sum = round(f_sum, 3)
+            e.insert(tk.END,f_sum)
+        except:
+            clear()
+            e.insert(tk.END, "Invalid Input")
+    else: # in case all of the input was typed in the entry
+        try:
+            sum = str(eval(e.get()))
+            clear()
+            f_sum =  float(sum) 
+            f_sum = round(f_sum, 3)
+            e.insert(tk.END,f_sum)
+        except:
+            clear()
+            e.insert(tk.END, "Invalid Input")
 
     new = True
 
@@ -108,6 +123,8 @@ zeroButton = tk.Button(root, text="0", height=2, width=5, command=lambda: storag
 
 
 # function buttons
+
+root.bind('<Return>',enter)
 
 plusButton = tk.Button(root, text="+", height=2, width=5, command=lambda: storage('+')).grid(row=1, column=3)
 
