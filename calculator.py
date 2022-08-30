@@ -164,13 +164,11 @@ decimalButton = tk.Button(root, text=".", command=lambda: storage('.'), height=2
 
 exponentButton = tk.Button(root, text="^", command=lambda: storage('**'), height=2, width=5).grid(row=5, column=3)
 
-equalButton = tk.Button(root, text="=", command=lambda: evaluate(), height=2, width=5).grid(row=6, column=3)
+equalButton = tk.Button(root, text="=", command=lambda: evaluate(), height=2, width=12).grid(row=6, column=2, columnspan=2)
 
-backButton = tk.Button(root, text=u"\u2190", command=lambda: backArrow(), height=2, width=5).grid(row=5, column=1)
+backButton = tk.Button(root, text=u"\u2190", command=lambda: backArrow(), height=2, width=12).grid(row=5, column=0,columnspan=2) # backspace arrow
 
-clearButton = tk.Button(root, text="Clear", command=lambda: clear(), height=2, width=5).grid(row=5,column=0)
-
-quadraticFormula = tk.Button(root, text="Quadratic Formula", command=lambda: qFormula(), height=2, width=18).grid(row=6, column=0, columnspan=3)
+clearButton = tk.Button(root, text="Clear", command=lambda: clear(), height=2, width=12).grid(row=6,column=0, columnspan=2)
 
 
 
