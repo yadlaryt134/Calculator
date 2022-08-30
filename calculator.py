@@ -3,6 +3,7 @@ import tkinter as tk
 import tkinter.messagebox
 from tkinter import *
 import math
+from collections import Counter
 
 root = tk.Tk()
 
@@ -42,12 +43,13 @@ def storage(x):
 def enterKey(event):
     evaluate()
 
-# def inputConversion():
+def inputConversion():
 
-#     expression = e.get()
-    
-#     for x in e.get():
-#         if x == "^":
+    counter = e.get().count("^")
+
+    line = e.get().replace("^", "**", counter)
+
+    return line
 
 
 def evaluate():
@@ -60,10 +62,13 @@ def evaluate():
     if expr:
 
         try:
-            # if "^" in str_expr:
-            #     inputConversion()
+            line = str_expr
 
-            sum = str(eval(str_expr))
+            # for when '^' is typed in the entry, exponents will evaluate
+            if "^" in e.get():
+                line = inputConversion()
+
+            sum = str(eval(line))
             clear()
             f_sum =  float(sum) 
             f_sum = round(f_sum, 3)
@@ -73,10 +78,14 @@ def evaluate():
             e.insert(tk.END, "Invalid Input")
     else: # in case all of the input was typed in the entry
         try:
-            # if "^" in str_expr:
-            #     inputConversion()
+            counter = 0
+            line = e.get()
 
-            sum = str(eval(e.get()))
+             # for when '^' is typed in the entry, exponents will evaluate
+            if "^" in e.get():
+                line = inputConversion()
+
+            sum = str(eval(line))
             clear()
             f_sum =  float(sum) 
             f_sum = round(f_sum, 3)
