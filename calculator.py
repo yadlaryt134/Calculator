@@ -39,8 +39,15 @@ def storage(x):
 
     e.insert(tk.END, x)
 
-def enter(event):
+def enterKey(event):
     evaluate()
+
+# def inputConversion():
+
+#     expression = e.get()
+    
+#     for x in e.get():
+#         if x == "^":
 
 
 def evaluate():
@@ -53,6 +60,9 @@ def evaluate():
     if expr:
 
         try:
+            # if "^" in str_expr:
+            #     inputConversion()
+
             sum = str(eval(str_expr))
             clear()
             f_sum =  float(sum) 
@@ -63,6 +73,9 @@ def evaluate():
             e.insert(tk.END, "Invalid Input")
     else: # in case all of the input was typed in the entry
         try:
+            # if "^" in str_expr:
+            #     inputConversion()
+
             sum = str(eval(e.get()))
             clear()
             f_sum =  float(sum) 
@@ -124,7 +137,7 @@ zeroButton = tk.Button(root, text="0", height=2, width=5, command=lambda: storag
 
 # function buttons
 
-root.bind('<Return>',enter)
+root.bind('<Return>',enterKey)
 
 plusButton = tk.Button(root, text="+", height=2, width=5, command=lambda: storage('+')).grid(row=1, column=3)
 
